@@ -1,0 +1,112 @@
+<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-product-recommendations.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-price.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-product-recommendations.css' | asset_url | stylesheet_tag }}</noscript>
+
+<product-recommendations
+  class="product-recommendations page-width"
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=12"
+>
+  {% if recommendations.performed and recommendations.products_count > 0 %}
+    {% if section.settings.heading != blank %}
+      <h2 class="product-recommendations__heading">{{ section.settings.heading | escape }}</h2>
+    {% endif %}
+
+    {%- capture slider_config -%}
+      {
+        "spaceBetween": 10,
+        "slidesPerView": 1,
+        "loop": true,
+        "loopedSlides": 4,
+        "speed": 400,
+        "breakpoints": {
+          "650": {
+            "slidesPerView": 2
+          },
+          "768": {
+            "slidesPerView": 3,
+            "spaceBetween": 20
+          },
+          "1024": {
+            "slidesPerView": 4
+          }
+        }
+      }
+    {%- endcapture -%}
+
+    <slider-component data-config='{{ slider_config }}'>
+      <div class="swiper-container">
+        <div class="swiper-wrapper" role="list">
+          {%- for recommendation in recommendations.products -%}
+            <div class="swiper-slide">
+              {% render 'card-product',
+              card_product: recommendation
+            %}
+            </div>
+          {%- endfor -%}
+        </div>
+
+        <button type="button" class="swiper-button swiper-button-prev">Prev</button>
+        <button type="button" class="swiper-button swiper-button-next">Next</button>
+      </div>
+    </slider-component>
+  {% endif %}
+</product-recommendations>
+
+{% javascript %}
+  class ProductRecommendations extends HTMLElement {
+    constructor() {
+      super();
+
+      const handleIntersection = (entries, observer) => {
+        if (!entries[0].isIntersecting) return;
+        observer.unobserve(this);
+
+        fetch(this.dataset.url)
+          .then(response => response.text())
+          .then(text => {
+
+            const html = document.createElement('div');
+            html.innerHTML = text;
+            const recommendations = html.querySelector('product-recommendations');
+
+            if (recommendations && recommendations.innerHTML.trim().length) {
+              this.innerHTML = recommendations.innerHTML;
+            }
+
+            if (html.querySelector('.swiper-slide')) {
+              this.classList.add('product-recommendations--loaded');
+            }
+
+            document.querySelector('slider-component').initSlider();
+          })
+          .catch(e => {
+            console.error(e);
+          });
+      }
+
+      new IntersectionObserver(handleIntersection.bind(this), {rootMargin: '0px 0px 200px 0px'}).observe(this);
+    }
+  }
+
+  customElements.define('product-recommendations', ProductRecommendations);
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Recommended products",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "You may also like"
+    }
+  ]
+}
+{% endschema %}

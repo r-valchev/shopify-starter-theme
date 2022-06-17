@@ -1,0 +1,15 @@
+.rich-text {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  z-index: 1;
+}
+
+.rich-text__blocks {
+  max-width: 78rem;
+  margin: 0 auto;
+}
+
+.rich-text__actions {
+  margin-top: 3rem;
+}

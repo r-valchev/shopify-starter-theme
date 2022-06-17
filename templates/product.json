@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "c27ef508-a2b7-4bed-a8a2-bae322e19995": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible row",
+            "content": "<p>Content<\/p>",
+            "page": ""
+          }
+        },
+        "4b2bd07c-bb88-4f21-ab2e-f5028c65cc3c": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Collapsible row",
+            "content": "<p>Content<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "c27ef508-a2b7-4bed-a8a2-bae322e19995",
+        "4b2bd07c-bb88-4f21-ab2e-f5028c65cc3c"
+      ],
+      "settings": {
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations"
+  ]
+}

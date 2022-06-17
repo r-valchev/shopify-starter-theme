@@ -1,0 +1,31 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+{%- paginate blog.articles by 12 -%}
+  <div class="main-blog page-width">
+    <h1 class="title--primary">{{ blog.title | escape }}</h1>
+
+    <div class="blog-articles">
+      {%- for article in blog.articles -%}
+        <div class="blog-articles__article">
+          {%- render 'card-article',
+            article: article
+          -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      {%- render 'pagination', paginate: paginate -%}
+    {%- endif -%}
+  </div>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Blog page",
+  "tag": "section",
+  "class": "section",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,30 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width">
+  <h1 class="title title--primary">{{ section.settings.title | escape }}</h1>
+
+  <ul class="grid grid--3-col-desktop grid--2-col-tablet-down" role="list">
+    {%- for collection in collections -%}
+      <li class="grid__item">
+        {% render 'card-collection',
+          card_collection: collection,
+          columns: 3
+        %}
+      </li>
+    {%- endfor -%}
+  </ul>
+</div>
+{% schema %}
+{
+  "name": "Collections list",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Collections"
+    }
+  ]
+}
+{% endschema %}

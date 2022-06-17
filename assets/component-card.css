@@ -1,0 +1,122 @@
+.card-wrapper {
+  position: relative;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: left;
+  text-decoration: none;
+}
+
+.card:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.card__media,
+.card .media {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.card__media {
+  overflow: hidden;
+}
+
+.card .media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.card__inner {
+  width: 100%;
+}
+
+.card__content {
+  flex-grow: 1;
+  position: relative;
+  display: grid;
+  grid-template-rows: max-content minmax(0,1fr) max-content auto;
+  width: 100%;
+  padding: 1rem;
+}
+
+.card__information {
+  grid-row-start: 2;
+  padding: 1.5rem 0;
+}
+
+@media screen and (max-width: 750px) {
+  .card__information {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.card__badge {
+  align-self: flex-end;
+  justify-self: flex-start;
+  grid-row-start: 3;
+}
+
+.card__heading {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.card__footer {
+  letter-spacing: 0.1rem;
+  font-size: 1.4rem;
+}
+
+.card__excerpt {
+  margin-top: 1.2rem;
+}
+
+/* Hover effects */
+@media screen and (min-width: 990px) {
+  .card .media.media--hover-effect > img:only-child,
+  .card-wrapper .media.media--hover-effect > img:only-child {
+    transition: transform var(--duration-long) ease;
+  }
+
+  .card:hover .media.media--hover-effect > img:first-child:only-child,
+  .card-wrapper:hover .media.media--hover-effect > img:first-child:only-child {
+    transform: scale(1.03);
+  }
+
+  .card-wrapper:hover .media.media--hover-effect > img:first-child:not(:only-child) {
+    opacity: 0;
+  }
+
+  .card-wrapper:hover .media.media--hover-effect > img + img {
+    opacity: 1;
+    transition: transform var(--duration-long) ease;
+    transform: scale(1.03);
+  }
+
+  .underline-links-hover:hover a {
+    text-decoration: underline;
+    text-underline-offset: 0.3rem;
+  }
+}
+
+/* Card article */
+.card--article .card__heading {
+  margin-bottom: 1rem;
+}

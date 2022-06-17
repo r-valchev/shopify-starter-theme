@@ -1,0 +1,33 @@
+.multicolumn__actions {
+  margin-top: 1.5rem;
+}
+
+/* Multicolumn card */
+.multicolumn-card {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.multicolumn-card h3,
+.multicolumn-card p {
+  margin: 0;
+}
+
+.multicolumn-card__info > :nth-child(2) {
+  margin-top: 1rem;
+}
+
+.multicolumn-card__info {
+  padding: 2rem;
+}
+
+.multicolumn-card__info .link {
+  margin-top: 1.5rem;
+  font-size: inherit;
+  text-decoration: none;
+}
+
+.multicolumn-card__info .icon-wrap {
+  margin-left: 0.8rem;
+  white-space: nowrap;
+}

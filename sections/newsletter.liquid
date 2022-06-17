@@ -1,0 +1,43 @@
+{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}
+{{ 'newsletter-section.css' | asset_url | stylesheet_tag }}
+
+<div class="newsletter">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="newsletter__heading">{{ section.settings.heading | escape }}</h2>
+    {% endif %}
+
+    {% if section.settings.text != blank %}
+      <div class="newsletter__subheading rte">{{ section.settings.text }}</div>
+    {% endif %}
+
+    {% render 'newsletter-form', section: section %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "default": "Subscribe to our emails",
+      "label": "t:sections.newsletter.blocks.heading.settings.heading.label"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "default": "<p>Be the first to know about new collections and exclusive offers.</p>",
+      "label": "t:sections.newsletter.blocks.paragraph.settings.paragraph.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ]
+}
+{% endschema %}

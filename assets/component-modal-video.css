@@ -1,0 +1,180 @@
+/* How to use
+<noscript>
+  <a href="{{ block.settings.video_url }}" class="collage-card__link{% if block.settings.image_padding %} collage-card-spacing{% endif %}">
+    <div class="media media--transparent ratio"{% if block.settings.cover_image != blank %} style="--ratio-percent: {{ 1 | divided_by: block.settings.cover_image.aspect_ratio | times: 100 }}%"{% else %} style="--ratio-percent: 100%"{% endif %}>
+      {%- if block.settings.cover_image != blank -%}
+        <img
+          srcset="{%- if block.settings.cover_image.width >= 550 -%}{{ block.settings.cover_image | image_url: width: 550 }} 550w,{%- endif -%}
+            {%- if block.settings.cover_image.width >= 720 -%}{{ block.settings.cover_image | image_url: width: 720 }} 720w,{%- endif -%}
+            {%- if block.settings.cover_image.width >= 990 -%}{{ block.settings.cover_image | image_url: width: 990 }} 990w,{%- endif -%}
+            {%- if block.settings.cover_image.width >= 1100 -%}{{ block.settings.cover_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+            {%- if block.settings.cover_image.width >= 1500 -%}{{ block.settings.cover_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+            {%- if block.settings.cover_image.width >= 2200 -%}{{ block.settings.cover_image | image_url: width: 2200 }} 2200w,{%- endif -%}
+            {%- if block.settings.cover_image.width >= 3000 -%}{{ block.settings.cover_image | image_url: width: 3000 }} 3000w,{%- endif -%}
+            {{ block.settings.cover_image | image_url }} {{ block.settings.cover_image.width }}w"
+          src="{{ block.settings.cover_image | image_url: width: 1500 }}"
+          sizes="(min-width: {{ settings.page_width }}px) {% if section.blocks.size == 1 %}calc({{ settings.page_width }}px - 100px){% else %}{{ settings.page_width | minus: 100 | times: 0.67 | round }}px{% endif %}, (min-width: 750px){% if section.blocks.size == 1 %} calc(100vw - 100px){% else %} 500px{% endif %}, calc(100vw - 30px)"
+          alt="{{ block.settings.description | escape }}"
+          loading="lazy"
+          width="{{ block.settings.cover_image.width }}"
+          height="{{ block.settings.cover_image.height }}"
+        >
+      {%- else -%}
+        {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+      {%- endif -%}
+    </div>
+  </a>
+</noscript>
+
+<modal-opener class="no-js-hidden" data-modal="#PopupModal-{{ block.id }}">
+  <div class="deferred-media">
+    <button class="deferred-media__poster full-unstyled-link{% if block.settings.image_padding %} collage-card-spacing{% endif %}" type="button" aria-haspopup="dialog" data-media-id="{{ block.settings.video_url.id }}">
+      <div class="media media--transparent ratio"{% if block.settings.cover_image != blank %} style="--ratio-percent: {{ 1 | divided_by: block.settings.cover_image.aspect_ratio | times: 100 }}%"{% else %} style="--ratio-percent: 100%"{% endif %}>
+        <span class="deferred-media__poster-button motion-reduce">
+          {%- render 'icon-play' -%}
+        </span>
+
+        {%- if block.settings.cover_image != blank -%}
+          <img
+            srcset="{%- if block.settings.cover_image.width >= 550 -%}{{ block.settings.cover_image | image_url: width: 550 }} 550w,{%- endif -%}
+              {%- if block.settings.cover_image.width >= 720 -%}{{ block.settings.cover_image | image_url: width: 720 }} 720w,{%- endif -%}
+              {%- if block.settings.cover_image.width >= 990 -%}{{ block.settings.cover_image | image_url: width: 990 }} 990w,{%- endif -%}
+              {%- if block.settings.cover_image.width >= 1100 -%}{{ block.settings.cover_image | image_url: width: 1100 }} 1100w,{%- endif -%}
+              {%- if block.settings.cover_image.width >= 1500 -%}{{ block.settings.cover_image | image_url: width: 1500 }} 1500w,{%- endif -%}
+              {%- if block.settings.cover_image.width >= 2200 -%}{{ block.settings.cover_image | image_url: width: 2200 }} 2200w,{%- endif -%}
+              {%- if block.settings.cover_image.width >= 3000 -%}{{ block.settings.cover_image | image_url: width: 3000 }} 3000w,{%- endif -%}
+              {{ block.settings.cover_image | image_url }} {{ block.settings.cover_image.width }}w"
+            src="{{ block.settings.cover_image | image_url: width: 1500 }}"
+            sizes="(min-width: {{ settings.page_width }}px) {% if section.blocks.size == 1 %}calc({{ settings.page_width }}px - 100px){% else %}{{ settings.page_width | minus: 100 | times: 0.67 | round }}px{% endif %}, (min-width: 750px){% if section.blocks.size == 1 %} calc(100vw - 100px){% else %} 500px{% endif %}, calc(100vw - 30px)"
+            alt="{{ block.settings.description | escape }}"
+            loading="lazy"
+            width="{{ block.settings.cover_image.width }}"
+            height="{{ block.settings.cover_image.height }}"
+          >
+        {%- else -%}
+          {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg placeholder' }}
+        {%- endif -%}
+      </div>
+    </button>
+  </div>
+</modal-opener>
+
+<modal-dialog id="PopupModal-{{ block.id }}" class="modal-video media-modal color-background-1">
+  <div class="modal-video__content" role="dialog" aria-label="{{ block.settings.description | escape }}" aria-modal="true" tabindex="-1">
+    <button id="ModalClose-{{ block.id }}" type="button" class="modal-video__toggle" aria-label="{{ 'accessibility.close' | t }}">{% render 'icon-close' %}</button>
+    <div class="modal-video__content-info">
+      <deferred-media class="modal-video__video template-popup">
+        <template>
+          {%- if block.settings.video_url.type == 'youtube' -%}
+            <iframe src="https://www.youtube.com/embed/{{ block.settings.video_url.id }}?enablejsapi=1" class="js-youtube" allow="autoplay; encrypted-media" allowfullscreen title="{{ block.settings.description | escape }}" ></iframe>
+          {%- else -%}
+            <iframe src="https://player.vimeo.com/video/{{ block.settings.video_url.id }}" class="js-vimeo" allow="autoplay; encrypted-media" allowfullscreen title="{{ block.settings.description | escape }}"></iframe>
+          {%- endif -%}
+        </template>
+      </deferred-media>
+    </div>
+  </div>
+</modal-dialog> */
+
+.modal-video {
+  background: rgba(var(--color-foreground), 0.2);
+  box-sizing: border-box;
+  height: 100%;
+  left: 0;
+  margin: 0 auto;
+  opacity: 0;
+  overflow: auto;
+  position: fixed;
+  top: 0;
+  visibility: hidden;
+  width: 100%;
+  z-index: -1;
+}
+
+.modal-video[open] {
+  opacity: 1;
+  visibility: visible;
+  z-index: 101;
+}
+
+.modal-video__content {
+  background-color: rgb(var(--color-background));
+  height: 100%;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.modal-video__toggle {
+  align-items: center;
+  background-color: rgb(var(--color-background));
+  border-radius: 50%;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.1);
+  color: rgba(var(--color-foreground), 0.55);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin: 0 0 0 auto;
+  padding: 1.2rem;
+  position: fixed;
+  right: 0.5rem;
+  top: 2rem;
+  width: 4rem;
+  z-index: 2;
+}
+
+@media screen and (min-width: 750px) {
+  .modal-video__toggle {
+    right: 4.8rem;
+    top: 3.5rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .modal-video__toggle {
+    right: 4.3rem;
+    top: 3rem;
+  }
+}
+
+.modal-video__toggle .icon {
+  height: auto;
+  margin: 0;
+  width: 2.2rem;
+}
+
+.modal-video__content-info {
+  height: calc(100% - 6rem);
+  margin: 0 auto;
+  padding-top: 8rem;
+  width: calc(100% - 1rem);
+}
+
+@media screen and (min-width: 750px) {
+  .modal-video__content-info {
+    height: calc(100% - 7.5rem);
+    padding-top: 9.5rem;
+    width: calc(100% - 9.6rem);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .modal-video__content-info {
+    height: calc(100% - 7rem);
+    padding-top: 9rem;
+    width: calc(100% - 8.6rem);
+  }
+}
+
+.modal-video__video,
+.modal-video__video iframe {
+  height: 100%;
+  width: 100%;
+}
+
+.modal-video__video iframe {
+  position: static;
+  border: 0;
+}

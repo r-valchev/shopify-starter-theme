@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-rich-text.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="page-width">
+  <div class="rich-text">
+    <div class="rich-text__blocks">
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading | escape }}</h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <div class="rich-text__text rte">{{ section.settings.text }}</div>
+      {% endif %}
+
+      {% if section.settings.button_label != blank %}
+        <div class="rich-text__actions">
+          <a{% if section.settings.button_link == blank %} role="link" aria-disabled="true"{% else %} href="{{ section.settings.button_link }}"{% endif %} class="button button--primary">
+            {{ section.settings.button_label | escape }}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.rich-text.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Talk about your brand"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich text"
+    }
+  ]
+}
+{% endschema %}

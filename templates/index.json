@@ -1,0 +1,265 @@
+{
+  "sections": {
+    "164879957523bad5ed": {
+      "type": "collapsible-content",
+      "blocks": {
+        "1648799575310f19fd-0": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "row_content": "<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam eveniet, assumenda dignissimos perferendis eligendi illo ab fugiat corrupti hic non sequi a laboriosam at magnam molestiae voluptatem libero, nobis voluptatibus repudiandae, itaque minus nesciunt earum laborum! Dolores in obcaecati, saepe delectus neque qui consequatur itaque deserunt. Aut accusamus atque obcaecati!<\/p>",
+            "page": ""
+          }
+        },
+        "1648799575310f19fd-1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "row_content": "<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam eveniet, assumenda dignissimos perferendis eligendi illo ab fugiat corrupti hic non sequi a laboriosam at magnam molestiae voluptatem libero, nobis voluptatibus repudiandae, itaque minus nesciunt earum laborum! Dolores in obcaecati, saepe delectus neque qui consequatur itaque deserunt. Aut accusamus atque obcaecati!<\/p>",
+            "page": ""
+          }
+        },
+        "1648799575310f19fd-2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "row_content": "<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam eveniet, assumenda dignissimos perferendis eligendi illo ab fugiat corrupti hic non sequi a laboriosam at magnam molestiae voluptatem libero, nobis voluptatibus repudiandae, itaque minus nesciunt earum laborum! Dolores in obcaecati, saepe delectus neque qui consequatur itaque deserunt. Aut accusamus atque obcaecati!<\/p>",
+            "page": ""
+          }
+        },
+        "1648799575310f19fd-3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "row_content": "<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam eveniet, assumenda dignissimos perferendis eligendi illo ab fugiat corrupti hic non sequi a laboriosam at magnam molestiae voluptatem libero, nobis voluptatibus repudiandae, itaque minus nesciunt earum laborum! Dolores in obcaecati, saepe delectus neque qui consequatur itaque deserunt. Aut accusamus atque obcaecati!<\/p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "1648799575310f19fd-0",
+        "1648799575310f19fd-1",
+        "1648799575310f19fd-2",
+        "1648799575310f19fd-3"
+      ],
+      "settings": {
+        "caption": "Caption",
+        "heading": "Collapsible content",
+        "open_first_collapsible_row": true
+      }
+    },
+    "16487995819104fc35": {
+      "type": "collection-list",
+      "blocks": {
+        "1648799581bc83b8e0-0": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mens"
+          }
+        },
+        "1648799581bc83b8e0-1": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "winter-collection"
+          }
+        }
+      },
+      "block_order": [
+        "1648799581bc83b8e0-0",
+        "1648799581bc83b8e0-1"
+      ],
+      "settings": {
+        "title": "Collections"
+      }
+    },
+    "1648799584380f1ae6": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Contact form"
+      }
+    },
+    "1648799590ba98d950": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Subscribe to our emails",
+        "text": "<p>Be the first to know about new collections and exclusive offers.<\/p>"
+      }
+    },
+    "16487995931e1aec0d": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "Blog posts",
+        "blog": "news",
+        "post_limit": 3
+      }
+    },
+    "16487995974323663d": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "description": "",
+        "collection": "mens",
+        "products_to_show": 8
+      }
+    },
+    "1648799601d398fc91": {
+      "type": "featured-product",
+      "settings": {
+        "product": "gray-shirt",
+        "show_dynamic_checkout": false
+      }
+    },
+    "1648799605a0b2b9fb": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/rows-of-candy-corn.jpg",
+        "heading": "Image banner",
+        "text": "Give customers details about the banner image or content on the template.",
+        "button_label_1": "First button label",
+        "button_link_1": "",
+        "button_label_2": "Button label",
+        "button_link_2": ""
+      }
+    },
+    "16490566380643133b": {
+      "type": "slideshow",
+      "blocks": {
+        "16490566387f533de8-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/rows-of-candy-corn.jpg",
+            "heading": "Image slide",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16490566387f533de8-0"
+      ],
+      "settings": {
+      }
+    },
+    "164879961314d51512": {
+      "type": "image-with-text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/cute-boy-in-costume.jpg",
+        "layout": "image_first",
+        "heading": "Image with text",
+        "caption": "Add a tagline",
+        "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+        "button_label": "Button label",
+        "button_link": ""
+      }
+    },
+    "1648799624d38692d6": {
+      "type": "multicolumn",
+      "blocks": {
+        "1648799624f3b04a97-0": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "1648799624f3b04a97-1": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "1648799624f3b04a97-2": {
+          "type": "column",
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "1648799624f3b04a97-0",
+        "1648799624f3b04a97-1",
+        "1648799624f3b04a97-2"
+      ],
+      "settings": {
+        "title": "Multicolumn",
+        "button_label": "Button label",
+        "button_link": ""
+      }
+    },
+    "16487996360349d192": {
+      "type": "rich-text",
+      "blocks": {
+        "1648799636b5c74ce6-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "h1"
+          }
+        },
+        "1648799636b5c74ce6-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+          }
+        },
+        "1648799636b5c74ce6-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "1648799636b5c74ce6-0",
+        "1648799636b5c74ce6-1",
+        "1648799636b5c74ce6-2"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "164879964832583199": {
+      "type": "video",
+      "settings": {
+        "heading": "Video",
+        "heading_size": "h1",
+        "cover_image": "shopify:\/\/shop_images\/cute-boy-in-costume.jpg",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "background-2",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "164879957523bad5ed",
+    "16487995819104fc35",
+    "1648799584380f1ae6",
+    "1648799590ba98d950",
+    "16487995931e1aec0d",
+    "16487995974323663d",
+    "1648799601d398fc91",
+    "1648799605a0b2b9fb",
+    "16490566380643133b",
+    "164879961314d51512",
+    "1648799624d38692d6",
+    "16487996360349d192",
+    "164879964832583199"
+  ]
+}

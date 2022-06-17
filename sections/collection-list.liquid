@@ -1,0 +1,92 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+<div class="page-width">
+  {%- unless section.settings.title == blank -%}
+    <h2 class="title">{{ section.settings.title | escape }}</h2>
+  {%- endunless -%}
+
+  {%- capture slider_config -%}
+    {
+      "spaceBetween": 10,
+      "breakpoints": {
+        "600": {
+          "slidesPerView": 2
+        },
+        "768": {
+          "slidesPerView": 3,
+          "spaceBetween": 20
+        }
+      }
+    }
+  {%- endcapture -%}
+
+  <slider-component data-config='{{ slider_config }}'>
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        {%- for block in section.blocks -%}
+          <div class="swiper-slide" {{ block.shopify_attributes }}>
+            {% render 'card-collection',
+              card_collection: block.settings.collection
+            %}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <button type="button" class="swiper-button swiper-button-prev">Prev</button>
+      <button type="button" class="swiper-button swiper-button-next">Next</button>
+    </div>
+  </slider-component>
+
+  {%- if section.blocks.size < collections.size -%}
+    <div class="collection-list-view-all" style="margin-top: 2rem; text-align: center;">
+      <a href="{{ routes.collections_url }}" class="button">{{ 'sections.collection_list.view_all' | t }}</a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Collections list",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Collections"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "Featured collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collections list",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
